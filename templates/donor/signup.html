@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load staticfiles %} 
+{% block title %}About{% endblock %}
+{% block body_block %}
+        <h1>Register as a Donor</h1>
+
+        {% if registered %}
+         Care_A_Bit says: <strong>thank you for the SignUp!</strong><br/><br/>
+         <a href="/">Return to the homepage.</a><br />
+         <a href="#">care enough for some donations ?</a><br/>
+        {% else %}
+         Please <strong>SignUp here!</strong><br />
+
+         <form id="user_form" method="post" action="/donor/signup/"
+                enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            {{ user_form.as_p }}
+            {{ donor_profile_form.as_p }}
+
+            <input type="submit" name="submit" value="SignUp" />
+         </form>
+        {% endif %}
+{% endblock %}

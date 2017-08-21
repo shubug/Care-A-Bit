@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Care A Bit</title>
+    </head>
+
+    <body>
+        {% if category %}
+        <h1>{{ category_domain }}</h1>
+            {% if ngos %}
+            <ul>
+                {% for ngo in ngos %}
+                <li><a href="{{ ngo.link }}">{{ ngo.name }}</a></li>
+                {% endfor %}
+            </ul>
+            {% else %}
+                <strong>No ngos currently under this category.</strong>
+            {% endif %}
+        {% else %}
+            The specified category {{ category_domain }} does not exist!
+        {% endif %}
+    </body>
+</html>

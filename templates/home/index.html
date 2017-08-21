@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load staticfiles %} 
+{% block title %}About{% endblock %}
+{% block body_block %}
+  <div class="jumbotron text-center">
+    <img src="{% static 'images/care_a_bit.jpg' %}" class="img-circle" alt="No Image Found" />
+    <h1>{{ boldmessage }}</h1>
+    <div class="alert alert-success alert-dismissible">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <form action="/donor">
+          Input your Email:<br>
+         <input type="text" name="Email">
+         <input type="submit" value="Submit">
+      </form>
+      {% if categories %}
+      <ul>
+          {% for category in categories %}
+              <li><a href="/ngo/category/{{ category.slug }}">{{ category.domain }}</a></li>
+          {% endfor %}
+      </ul>
+      {% else %}
+       <strong>There are no categories present</strong>
+      {% endif %}
+      <!--<strong>Success!</strong> Indicates a successful or positive action.-->
+    </div>
+  </div>
+{% endblock %}
